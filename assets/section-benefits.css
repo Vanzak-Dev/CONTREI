@@ -1,0 +1,215 @@
+/* Frame do Figma: 1920×650 (mobile: 393×1036) */
+.benefits {
+  position: relative;
+  overflow: hidden;
+  height: calc(650 * var(--u));
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+  background: #f2fbfe;
+}
+
+.benefits__slider {
+  position: absolute;
+  inset: 0;
+}
+
+/* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+.benefits__slide {
+  position: relative;
+  width: calc(1920 * var(--u));
+  height: 100%;
+  margin-left: calc(50% - 960 * var(--u));
+}
+
+/* foto espelhada, esfumaçando para o fundo à esquerda (o degradê é espelhado junto, como no Figma) */
+.benefits__photo {
+  position: absolute;
+  left: calc(697 * var(--u));
+  top: calc(-97 * var(--u));
+  width: calc(1246 * var(--u));
+  height: calc(830 * var(--u));
+  transform: scaleX(-1);
+}
+.benefits__photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.benefits__photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(89.95deg, rgb(242 251 254 / 0) 50.751%, #f2fbfe 99.972%);
+}
+
+.benefits__fade,
+.benefits__top { display: none; }
+
+.benefits__heading {
+  position: absolute;
+  left: calc(198 * var(--u));
+  top: calc(128 * var(--u));
+  /* largura do Figma fixa: com a fonte fixa o título continua em 2 linhas quando o layout encolhe */
+  width: 515px;
+}
+
+.benefits__eyebrow {
+  margin: 0;
+  color: rgb(57 54 104 / 0.7);
+  font-size: 24px;
+  line-height: normal;
+  white-space: nowrap;
+}
+
+.benefits__title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/*
+  Cards presos na base do banner (272 de altura no Figma); se o texto quebrar em mais linhas
+  com o layout encolhido, crescem para cima. No Figma o 1º fica 1px mais alto e 24px (não 16) antes do 2º.
+*/
+.benefits__cards {
+  position: absolute;
+  left: calc(199 * var(--u));
+  bottom: 0;
+  display: flex;
+  min-height: calc(272 * var(--u));
+  gap: calc(16 * var(--u));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.benefits__card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  width: calc(237 * var(--u));
+  padding: calc(48 * var(--u)) calc(32 * var(--u)) 0;
+  border-radius: 12px 12px 0 0;
+  background: #fff;
+}
+.benefits__card:first-child { margin: calc(-1 * var(--u)) calc(8 * var(--u)) 0 0; }
+
+.benefits__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(32 * var(--u));
+  height: calc(32 * var(--u));
+}
+/* posição de cada ícone dentro do quadro de 32 */
+.benefits__icon-img {
+  position: absolute;
+  max-width: none;
+}
+.benefits__icon-img--obrigacoes { left: 1.09%; top: 1.09%; width: 97.82%; height: 97.82%; }
+.benefits__icon-img--clinicas { left: 2.76%; top: 4.82%; width: 94.4%; height: 90.34%; }
+.benefits__icon-img--bi { left: 0; top: 0; width: 100%; height: 100%; }
+.benefits__icon-img--faturamento { left: 19.84%; top: 2.66%; width: 60.47%; height: 94.53%; }
+
+.benefits__text {
+  margin: 0;
+  font-size: 16px;
+  line-height: normal;
+}
+
+/* setas e dots (só aparecem com mais de um banner) */
+.benefits .slider__arrow--prev {
+  color: var(--color-primary);
+  background: rgb(57 54 104 / 0.1);
+}
+.benefits .slider__dots { bottom: 17px; }
+.benefits .dots__dot:not([aria-current='true']) { background: var(--color-primary); }
+
+@media (max-width: 1023.98px) {
+  .benefits__slide {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .benefits {
+    height: 1036px;
+    margin-top: 0;
+    background:
+      url("data:image/svg+xml;utf8,<svg viewBox='0 0 393 1036' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='0.6299999952316284'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-15.904 -81.502 44.466 -317.86 196.5 630.13)'><stop stop-color='rgba(255,255,255,0)' offset='0'/><stop stop-color='rgba(255,255,255,1)' offset='1'/></radialGradient></defs></svg>")
+        0 0 / 100% 100% no-repeat,
+      #f2fbfe;
+  }
+
+  .benefits__photo {
+    left: calc(50% - 401.5px);
+    top: 47px;
+    width: 754.408px;
+    height: 503px;
+  }
+  .benefits__photo::after {
+    background: linear-gradient(1.44deg, rgb(242 251 254 / 0) 83.715%, #f2fbfe 98.24%);
+  }
+
+  /* esfumaça a base da foto por trás dos cards */
+  .benefits__fade {
+    display: block;
+    position: absolute;
+    left: calc(50% - 197.5px);
+    top: 296px;
+    width: 393px;
+    height: 467px;
+    background: url("data:image/svg+xml;utf8,<svg viewBox='0 0 393 467' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='1'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-3.4179e-7 -23.443 252.26 -0.0000036778 196 234.43)'><stop stop-color='rgba(248,253,254,1)' offset='0.16414'/><stop stop-color='rgba(248,253,254,0)' offset='1'/></radialGradient></defs></svg>")
+      0 0 / 100% 100% no-repeat;
+  }
+  /* esfumaça o topo da foto por trás do título */
+  .benefits__top {
+    display: block;
+    position: absolute;
+    left: calc(50% - 196.5px);
+    top: -234px;
+    width: 393px;
+    height: 467px;
+    background: url("./benefits-topo.svg") 0 0 / 100% 100% no-repeat;
+  }
+
+  .benefits__heading {
+    left: calc(50% - 196.5px);
+    top: 32px;
+    width: 393px;
+    padding: 0 32px;
+    text-align: center;
+  }
+  .benefits__eyebrow { font-size: 14px; }
+  .benefits__title { font-size: 24px; }
+
+  .benefits__cards {
+    left: calc(50% - 196.5px);
+    top: 363px;
+    bottom: auto;
+    flex-direction: column;
+    gap: 19px;
+    width: 393px;
+    min-height: 0;
+    padding: 0 32px;
+  }
+  .benefits__card,
+  .benefits__card:first-child {
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+    width: auto;
+    margin: 0;
+    padding: 32px;
+    border-radius: 12px;
+  }
+  .benefits__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .benefits__text {
+    flex: 1;
+    font-size: 16px;
+  }
+
+  .benefits .slider__dots { bottom: 32px; }
+}

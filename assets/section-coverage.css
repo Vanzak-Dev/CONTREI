@@ -1,0 +1,128 @@
+/* Frame do Figma: 1920×680 (mobile: 393×781, com a arte num bloco de 361×347 no fim) */
+.coverage {
+  overflow: hidden;
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+}
+
+/* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+.coverage__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(1920 * var(--u));
+  min-height: calc(680 * var(--u));
+  margin-left: calc(50% - 960 * var(--u));
+  padding: calc(32 * var(--u)) 0 calc(32 * var(--u)) calc(200 * var(--u));
+}
+
+.coverage__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(32 * var(--u));
+  width: calc(750 * var(--u));
+}
+
+.coverage__text {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+/*
+  Mapa do Brasil (máscara) com fundo azul e 3 texturas em círculos, a mesma técnica da seção "sobre".
+  --s é 1px do Figma dentro da arte: no mobile a arte é a do desktop em escala 361/646, então as medidas valem para os dois.
+*/
+.coverage__art {
+  --s: var(--u);
+  position: absolute;
+  left: calc(1073 * var(--u));
+  top: calc(29 * var(--u));
+  width: calc(646 * var(--s));
+  height: calc(621 * var(--s));
+}
+
+.coverage__map {
+  position: absolute;
+  inset: 0;
+  /* no Figma o retângulo azul começa 10px depois da borda do mapa */
+  background: linear-gradient(#99ddf7 0 0) calc(10 * var(--s)) 0 / 100% 100% no-repeat;
+  mask: url("./coverage-mapa.svg") 0 0 / 100% 100% no-repeat;
+}
+
+.coverage__texture {
+  position: absolute;
+  aspect-ratio: 1;
+  opacity: 0.3;
+  mix-blend-mode: hard-light;
+  background: center / cover no-repeat;
+  mask: url("./about-circulo.svg") no-repeat;
+}
+.coverage__texture--1 {
+  left: calc(-35.105 * var(--s));
+  top: calc(187.627 * var(--s));
+  width: calc(609.389 * var(--s));
+  background-image: url("./about-textura-1.png");
+  mask-position: calc(61.804 * var(--s)) 0;
+  mask-size: calc(494.433 * var(--s)) calc(494.433 * var(--s));
+}
+/* no Figma essa imagem fica deslocada dentro do quadrado: 123,84% × 92,88% em -34,33% / -6,31% */
+.coverage__texture--2 {
+  left: calc(280.176 * var(--s));
+  top: calc(32.461 * var(--s));
+  width: calc(509.367 * var(--s));
+  background: url("./about-textura-2.png") calc(-174.866 * var(--s)) calc(-32.141 * var(--s)) / 123.84% 92.88% no-repeat;
+  mask-position: calc(51.66 * var(--s)) 0;
+  mask-size: calc(413.28 * var(--s)) calc(413.28 * var(--s));
+}
+.coverage__texture--3 {
+  left: calc(-98.472 * var(--s));
+  top: 0;
+  width: calc(673.801 * var(--s));
+  background-image: url("./about-textura-3.png");
+  mask-position: calc(129.716 * var(--s)) 0;
+  mask-size: calc(360.322 * var(--s)) calc(360.322 * var(--s));
+}
+
+.coverage__logo {
+  position: absolute;
+  left: calc(6 * var(--s));
+  top: calc(312 * var(--s));
+  width: calc(210 * var(--s));
+  height: calc(191.772 * var(--s));
+  max-width: none;
+}
+
+@media (max-width: 1023.98px) {
+  .coverage { margin-top: 32px; }
+
+  .coverage__inner {
+    flex-direction: column;
+    gap: 32px;
+    width: auto;
+    min-height: 0;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  /* título → texto 24px, texto → botão 16px */
+  .coverage__content {
+    align-self: stretch;
+    gap: 16px;
+    width: auto;
+    padding: 0 32px;
+  }
+  .coverage__text {
+    margin-top: 8px;
+    font-size: 16px;
+  }
+
+  .coverage__art {
+    --s: calc(361px / 646);
+    position: relative;
+    left: auto;
+    top: auto;
+  }
+}

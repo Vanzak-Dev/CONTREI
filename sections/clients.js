@@ -1,0 +1,41 @@
+import Image from 'next/image';
+import '../assets/section-clients.css';
+import minerva from '../assets/clients-minerva.png';
+import minasGerais from '../assets/clients-minas-gerais.png';
+import ge from '../assets/clients-ge.png';
+import sebrae from '../assets/clients-sebrae.png';
+import senac from '../assets/clients-senac.png';
+import gerdau from '../assets/clients-gerdau.png';
+
+const logos = [
+  [minerva, 'Minerva Foods'],
+  [minasGerais, 'Governo de Minas Gerais'],
+  [ge, 'GE'],
+  [sebrae, 'Sebrae'],
+  [senac, 'Senac'],
+  [gerdau, 'Gerdau'],
+];
+
+export default function Clients() {
+  return (
+    <section className="clients">
+      <div className="clients__heading">
+        <p className="clients__eyebrow">Siga o exemplo das maiores do mercado brasileiro</p>
+        <h2 className="clients__title">Empresas que escolheram a Contrei:</h2>
+      </div>
+      <div className="clients__viewport">
+        <ul className="clients__track">
+          {logos.map(([src, alt]) => (
+            <li key={alt} className="clients__item">
+              <Image src={src} alt={alt} sizes="153px" loading="eager" className="clients__logo" />
+            </li>
+          ))}
+          {/* o Figma desktop repete a Minerva no fim da linha; no slider mobile ela sai */}
+          <li className="clients__item clients__item--repeat" aria-hidden="true">
+            <Image src={minerva} alt="" sizes="153px" loading="eager" className="clients__logo" />
+          </li>
+        </ul>
+      </div>
+    </section>
+  );
+}

@@ -1,0 +1,81 @@
+.clients {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(64 * var(--u));
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+  padding: calc(64 * var(--u)) 0;
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.clients__eyebrow {
+  margin: 0;
+  color: rgb(57 54 104 / 0.7);
+  font-size: 16px;
+  line-height: normal;
+}
+
+.clients__title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.clients__viewport {
+  align-self: stretch;
+  overflow: hidden;
+}
+
+.clients__track {
+  display: flex;
+  gap: calc(128 * var(--u));
+  width: max-content;
+  margin: 0;
+  padding: 0 0 0 calc(64 * var(--u));
+  list-style: none;
+}
+
+.clients__logo {
+  display: block;
+  width: calc(153 * var(--u));
+  height: calc(100 * var(--u));
+  object-fit: cover;
+}
+
+@media (max-width: 1023.98px) {
+  .clients {
+    gap: 32px;
+    margin-top: 32px;
+    padding: 32px 0;
+  }
+
+  .clients__heading { padding: 0 32px; }
+  .clients__eyebrow { font-size: 14px; }
+  /* garante a quebra do Figma: "Empresas que / escolheram a Contrei:" */
+  .clients__title {
+    font-size: 24px;
+    text-wrap: balance;
+  }
+
+  /* slider: rolagem nativa arrastando com o dedo, parando sempre no início de um logo */
+  .clients__viewport {
+    overflow-x: auto;
+    overscroll-behavior-x: contain;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 16px;
+    scrollbar-width: none;
+  }
+  .clients__track {
+    gap: 64px;
+    padding: 0 16px;
+  }
+  .clients__item { scroll-snap-align: start; }
+  .clients__item--repeat { display: none; }
+  .clients__logo {
+    width: 153px;
+    height: 100px;
+  }
+}

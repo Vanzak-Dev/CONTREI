@@ -1,0 +1,90 @@
+/* Frame do Figma: 1920×490 (mobile: 393×592) */
+.seals {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(64 * var(--u));
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+  padding: calc(64 * var(--u)) calc(50% - 760 * var(--u));
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.seals__list {
+  display: flex;
+  align-items: center;
+  gap: calc(20 * var(--u));
+  align-self: stretch;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.seals__item {
+  display: flex;
+  flex: 1 1 0;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  min-width: 0;
+  text-align: left;
+}
+.seals__item--abresst { gap: calc(32 * var(--u)); }
+
+/* recorte de cada selo como no Figma (a imagem passa um pouco da caixa) */
+.seals__img {
+  position: relative;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.seals__img img {
+  position: absolute;
+  max-width: none;
+}
+.seals__item--iso27001 .seals__img { width: calc(144 * var(--u)); height: calc(197.647 * var(--u)); }
+.seals__item--iso27001 .seals__img img { left: -1.72%; top: 0; width: 102.94%; height: 100%; }
+.seals__item--abresst .seals__img { width: calc(138.75 * var(--u)); height: calc(210 * var(--u)); }
+.seals__item--abresst .seals__img img { left: -14.79%; top: -3.65%; width: 130.75%; height: 100%; }
+.seals__item--iso9001 .seals__img { width: calc(135.75 * var(--u)); height: calc(198.132 * var(--u)); }
+.seals__item--iso9001 .seals__img img { left: 0; top: 0; width: 100%; height: 100%; }
+
+.seals__text {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: normal;
+}
+
+@media (max-width: 1023.98px) {
+  .seals {
+    gap: 32px;
+    margin-top: 32px;
+    padding: 32px 0;
+  }
+
+  .seals__heading {
+    align-self: stretch;
+    padding: 0 32px;
+  }
+
+  .seals__list {
+    flex-direction: column;
+    gap: 20px;
+  }
+  .seals__item,
+  .seals__item--abresst {
+    flex: none;
+    justify-content: center;
+    gap: 32px;
+    padding: 0 16px;
+  }
+
+  .seals__item--iso27001 .seals__img { width: 86px; height: 118px; }
+  .seals__item--abresst .seals__img { width: 82px; height: 125px; }
+  .seals__item--iso9001 .seals__img { width: 82px; height: 119px; }
+
+  .seals__text {
+    width: 129px;
+    font-size: 20px;
+  }
+}

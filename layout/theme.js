@@ -1,12 +1,16 @@
+import { Manrope, DM_Sans } from 'next/font/google';
 import '../assets/base.css';
 import Header from '../sections/header';
 import Footer from '../sections/footer';
+
+const manrope = Manrope({ subsets: ['latin'], variable: '--font-manrope' });
+const dmSans = DM_Sans({ subsets: ['latin'], axes: ['opsz'], variable: '--font-dm-sans' });
 
 export const metadata = { title: 'Contrei' };
 
 export default function Theme({ children }) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" className={`${manrope.variable} ${dmSans.variable}`}>
       <body>
         <Header />
         <main>{children}</main>

@@ -1,2 +1,158 @@
+:root {
+  --color-primary: #393668;
+  --color-accent: #00afef;
+  --color-surface: #f4fcff;
+  --color-background: #fefefe;
+  /*
+    1px do Figma desktop. O conteúdo do Figma tem 1520px (200px de margem em cada lado do frame de 1920):
+    o layout fica 1:1 enquanto esses 1520px + 32px de respiro por lado cabem (≥ 1584px) e só encolhe abaixo disso.
+    As fontes não usam --u: são sempre o valor do Figma.
+  */
+  --u: min(1px, (100vw - 64px) / 1520);
+}
+
 *, *::before, *::after { box-sizing: border-box; }
-body { margin: 0; font-family: system-ui, sans-serif; }
+body {
+  margin: 0;
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  color: var(--color-primary);
+  background: var(--color-background);
+}
+
+/*
+  Quebras de linha manuais do Figma. As do desktop só valem com o layout em 1:1 (≥ 1584px):
+  abaixo disso os blocos ficam mais estreitos e o texto quebra sozinho, sem deixar palavra solta.
+*/
+.br-desktop,
+.br-mobile { display: none; }
+@media (min-width: 1584px) {
+  .br-desktop { display: inline; }
+}
+@media (min-width: 1024px) and (max-width: 1583.98px) {
+  h1, h2, h3, p { text-wrap: pretty; }
+}
+
+/* texto de apoio acima do título das seções */
+.eyebrow {
+  margin: 0;
+  color: rgb(57 54 104 / 0.7);
+  font-size: 16px;
+  line-height: normal;
+}
+.eyebrow--lg { font-size: 24px; }
+
+/* título das seções */
+.title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* botão contornado com seta (hero, sobre, etapas); contorno por dentro, como o stroke do Figma */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: calc(32 * var(--u));
+  padding: calc(13 * var(--u)) calc(28 * var(--u));
+  border-radius: 50px;
+  box-shadow: inset 0 0 0 1px var(--color-primary);
+  color: var(--color-primary);
+  font-size: 18px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration: none;
+  white-space: nowrap;
+}
+.button__arrow { flex-shrink: 0; }
+.button__arrow--mobile { display: none; }
+
+/* indicador de slides (snippets/dots.js) */
+.dots {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.dots__dot {
+  width: 10px;
+  height: 10px;
+  padding: 0;
+  border: 0;
+  border-radius: 555px;
+  background: #fff;
+  cursor: pointer;
+  transition: width 0.3s, background-color 0.3s;
+}
+.dots__dot[aria-current='true'] {
+  width: 20px;
+  background: var(--color-accent);
+}
+
+/* slider (snippets/slider.js) */
+.slider { position: relative; }
+.slider__track {
+  display: flex;
+  height: 100%;
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+.slider__slide {
+  position: relative;
+  flex: 0 0 100%;
+  overflow: hidden;
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+}
+/* seta branca por padrão; a seção troca a cor com `color` (borda e chevron seguem) */
+.slider__arrow {
+  position: absolute;
+  top: 50%;
+  translate: 0 -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 1px solid currentColor;
+  border-radius: 50px;
+  color: #fff;
+  background: rgb(255 255 255 / 0.1);
+  cursor: pointer;
+}
+.slider__chevron {
+  width: 7.636px;
+  height: 14.224px;
+  background: currentColor;
+  mask: url("./icon-chevron.svg") 0 0 / 100% 100% no-repeat;
+}
+.slider__arrow--prev { left: calc(142 * var(--u)); }
+.slider__arrow--prev .slider__chevron { transform: scaleX(-1); }
+.slider__arrow--next { right: calc(142 * var(--u)); }
+.slider__dots {
+  position: absolute;
+  bottom: 32px;
+  left: 50%;
+  translate: -50%;
+}
+
+@media (max-width: 1023.98px) {
+  .br-mobile { display: inline; }
+
+  .eyebrow { font-size: 14px; }
+  .title { font-size: 24px; }
+
+  .button {
+    gap: 20px;
+    padding: 10px 18px;
+    border-radius: 35px;
+    box-shadow: inset 0 0 0 0.7px var(--color-primary);
+    font-size: 12px;
+  }
+  .button__arrow--desktop { display: none; }
+  .button__arrow--mobile { display: block; }
+
+  .slider__arrow { display: none; }
+}

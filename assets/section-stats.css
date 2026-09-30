@@ -1,0 +1,120 @@
+/* Frame do Figma: 1920×528, conteúdo centralizado na vertical (mobile: 393×485) */
+.stats {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(64 * var(--u));
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+  padding: calc(47 * var(--u)) calc(50% - 760 * var(--u));
+  background: var(--color-surface);
+  text-align: center;
+}
+
+.stats__eyebrow {
+  margin: 0;
+  color: rgb(57 54 104 / 0.7);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+.stats__title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+/* ---------- desktop: o slider vira uma linha de 4 colunas ---------- */
+
+.stats__slider { align-self: stretch; }
+.stats__slider .slider__track {
+  align-items: flex-start;
+  gap: calc(10 * var(--u));
+  overflow: visible;
+}
+.stats__slider .slider__slide { flex: 1 1 0; }
+.stats__slider .slider__arrow,
+.stats__slider .slider__dots { display: none; }
+
+.stats__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  padding: calc(16 * var(--u)) 0;
+}
+
+/* ícone de 48 num quadro de 50 (mobile: 30,72 em 32 — mesma proporção) */
+.stats__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: calc(50 * var(--u));
+  height: calc(50 * var(--u));
+}
+.stats__icon-img {
+  width: 96%;
+  height: auto;
+}
+.stats__icon-img--clinicas { width: 90.73%; }
+
+.stats__figure {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+.stats__value { font-size: 64px; }
+.stats__label { font-size: 48px; }
+
+.stats__desc {
+  margin: 0;
+  font-size: 24px;
+  line-height: normal;
+}
+
+@media (max-width: 1023.98px) {
+  .stats {
+    gap: 32px;
+    margin-top: 0;
+    padding: 32px 0;
+  }
+
+  .stats__heading { padding: 0 32px; }
+  .stats__eyebrow {
+    font-size: 14px;
+    line-height: normal;
+  }
+  .stats__title { font-size: 24px; }
+
+  /* ---------- mobile: carrossel, um número por vez, dots 32px abaixo ---------- */
+  .stats__slider { padding-bottom: 42px; }
+  .stats__slider .slider__track {
+    align-items: stretch;
+    gap: 0;
+    overflow: auto hidden;
+  }
+  .stats__slider .slider__slide { flex: 0 0 100%; }
+  .stats__slider .slider__dots {
+    display: block;
+    bottom: 0;
+  }
+  .stats .dots__dot:not([aria-current='true']) { background: var(--color-primary); }
+
+  .stats__item {
+    justify-content: center;
+    height: 100%;
+    gap: 16px;
+    padding: 16px 0;
+  }
+  .stats__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .stats__value { font-size: 64px; }
+  .stats__label { font-size: 48px; }
+  .stats__desc { font-size: 24px; }
+}

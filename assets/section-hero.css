@@ -1,0 +1,136 @@
+/*
+  No Figma o header fica por cima dos 148px iniciais do hero (80px no mobile).
+  Aqui o hero vem depois do header, então todo "top" é o valor do Figma menos a altura do header.
+*/
+.hero {
+  position: relative;
+  overflow: hidden;
+  height: calc(702 * var(--u));
+  background:
+    url("data:image/svg+xml;utf8,<svg viewBox='0 0 1920 850' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='0.20000000298023224'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-59.2 -88.3 253.34 -169.85 960 517)'><stop stop-color='rgba(255,255,255,0)' offset='0'/><stop stop-color='rgba(128,215,247,0.5)' offset='0.5'/><stop stop-color='rgba(64,195,243,0.75)' offset='0.75'/><stop stop-color='rgba(32,185,241,0.875)' offset='0.875'/><stop stop-color='rgba(16,180,240,0.9375)' offset='0.9375'/><stop stop-color='rgba(0,175,239,1)' offset='1'/></radialGradient></defs></svg>")
+      center bottom / 100% calc(850 * var(--u)) no-repeat,
+    var(--color-background);
+}
+
+.hero__texture {
+  position: absolute;
+  top: calc(-148 * var(--u));
+  left: calc(-3 * var(--u));
+  width: calc(100% + 3 * var(--u));
+  height: calc(850 * var(--u));
+  max-width: none;
+  object-fit: cover;
+  opacity: 0.15;
+  transform: scaleY(-1);
+  pointer-events: none;
+}
+.hero__texture--mirror { transform: scaleX(-1); }
+
+/* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+.hero__inner {
+  position: relative;
+  width: calc(1920 * var(--u));
+  height: 100%;
+  margin-left: calc(50% - 960 * var(--u));
+}
+
+.hero__image {
+  position: absolute;
+  left: calc(476 * var(--u));
+  top: calc(-203 * var(--u));
+  width: calc(1003.406 * var(--u));
+  height: calc(1344 * var(--u));
+  max-width: none;
+  object-fit: cover;
+}
+
+.hero__fade { display: none; }
+
+.hero__title {
+  position: absolute;
+  left: calc(198 * var(--u));
+  top: calc(129 * var(--u));
+  /* com a fonte fixa, abaixo de 400px o título quebraria em mais linhas que no Figma */
+  width: max(415 * var(--u), 400px);
+  margin: 0;
+  font-size: 64px;
+  font-weight: 600;
+  line-height: 1.15;
+}
+
+.hero__content {
+  position: absolute;
+  right: calc(204 * var(--u));
+  top: calc(214 * var(--u));
+  width: max(365 * var(--u), 340px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: calc(32 * var(--u));
+  text-align: right;
+}
+
+.hero__text {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+@media (max-width: 1023.98px) {
+  .hero {
+    height: 570px;
+    background:
+      url("data:image/svg+xml;utf8,<svg viewBox='0 0 393 650' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='0.20000000298023224'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-12.118 -67.524 51.856 -129.89 196.5 395.35)'><stop stop-color='rgba(255,255,255,0)' offset='0'/><stop stop-color='rgba(128,215,247,0.5)' offset='0.5'/><stop stop-color='rgba(64,195,243,0.75)' offset='0.75'/><stop stop-color='rgba(32,185,241,0.875)' offset='0.875'/><stop stop-color='rgba(16,180,240,0.9375)' offset='0.9375'/><stop stop-color='rgba(0,175,239,1)' offset='1'/></radialGradient></defs></svg>")
+        center bottom / 100% 650px no-repeat,
+      var(--color-background);
+  }
+
+  .hero__texture { display: none; }
+
+  .hero__inner {
+    width: auto;
+    margin-left: 0;
+  }
+
+  .hero__image {
+    left: calc(50% - 264.5px);
+    top: -6px;
+    width: 506px;
+    height: 678px;
+  }
+
+  .hero__fade {
+    display: block;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 320px;
+    height: 251px;
+    background: linear-gradient(to top, var(--color-background) 33.363%, rgba(254, 254, 254, 0));
+  }
+
+  .hero__title {
+    left: 50%;
+    top: 16px;
+    width: 271px;
+    transform: translateX(-50%);
+    font-size: 24px;
+    text-align: center;
+  }
+
+  .hero__content {
+    left: 50%;
+    right: auto;
+    top: 436px;
+    width: 270px;
+    transform: translateX(-50%);
+    align-items: center;
+    gap: 16px;
+    text-align: center;
+  }
+
+  .hero__text { font-size: 16px; }
+
+  /* no Figma o botão está 7,75px à direita do centro */
+  .hero__cta { transform: translateX(7.75px); }
+}

@@ -1,0 +1,186 @@
+/*
+  Frame do Figma: 1920×680 (mobile: 393×797, com a arte num bloco de 393×418).
+  As medidas da arte são as do "Mask group" do Figma, relativas a .about__shape.
+*/
+.about {
+  overflow: hidden;
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+}
+
+/* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+.about__inner {
+  position: relative;
+  width: calc(1920 * var(--u));
+  margin-left: calc(50% - 960 * var(--u));
+  padding: calc(115 * var(--u)) 0 calc(114 * var(--u)) calc(1079 * var(--u));
+}
+
+/* ponytail: arte presa ao frame de 1920; acima disso sobra branco à esquerda do azul */
+.about__media {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+/* forma diagonal azul; ancorada embaixo para esticar junto se o texto crescer (fonte mínima de 14px) */
+.about__shape {
+  position: absolute;
+  left: 0;
+  top: calc(-35.895 * var(--u));
+  bottom: calc(-0.622 * var(--u));
+  width: calc(1089.274 * var(--u));
+  background: #99ddf7;
+  mask: url("./about-forma.svg") 0 0 / 100% 100% no-repeat;
+}
+.about__shape::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    calc(1990.5 * var(--u)) calc(1361 * var(--u)) at calc(660.5 * var(--u)) calc(576.895 * var(--u)),
+    #fff,
+    rgb(255 255 255 / 0)
+  );
+}
+
+.about__texture {
+  position: absolute;
+  aspect-ratio: 1;
+  mix-blend-mode: soft-light;
+  background: center / cover no-repeat;
+}
+.about__texture--1 {
+  left: calc(-157.229 * var(--u));
+  top: calc(236.333 * var(--u));
+  width: calc(948.816 * var(--u));
+  background-image: url("./about-textura-1.png");
+  mask: url("./about-circulo.svg") calc(96.229 * var(--u)) 0 / calc(769.83 * var(--u)) calc(769.83 * var(--u)) no-repeat;
+}
+/* no Figma essa imagem fica deslocada dentro do quadrado: 123,84% × 92,88% em -34,33% / -6,31% */
+.about__texture--2 {
+  left: calc(333.662 * var(--u));
+  top: calc(-5.259 * var(--u));
+  width: calc(793.082 * var(--u));
+  background: url("./about-textura-2.png") calc(-272.265 * var(--u)) calc(-50.043 * var(--u)) / 123.84% 92.88% no-repeat;
+  mask: url("./about-circulo.svg") calc(80.434 * var(--u)) 0 / calc(643.475 * var(--u)) calc(643.475 * var(--u)) no-repeat;
+}
+.about__texture--3 {
+  left: calc(-255.891 * var(--u));
+  top: calc(-55.801 * var(--u));
+  width: calc(1049.105 * var(--u));
+  background-image: url("./about-textura-3.png");
+  mask: url("./about-circulo.svg") calc(201.967 * var(--u)) 0 / calc(561.019 * var(--u)) calc(561.019 * var(--u)) no-repeat;
+}
+
+.about__image {
+  position: absolute;
+  left: calc(-70 * var(--u));
+  bottom: calc(-159 * var(--u));
+  width: calc(1293.316 * var(--u));
+  height: auto;
+  max-width: none;
+}
+
+.about__content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  width: calc(668 * var(--u));
+}
+
+.about__text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: calc(24 * var(--u));
+  min-height: calc(368 * var(--u));
+}
+
+.about__title {
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.about__desc {
+  margin: 0;
+  max-width: calc(638 * var(--u));
+  font-size: 20px;
+  line-height: normal;
+}
+
+.about__cta { margin: calc(32 * var(--u)) 0 0 calc(4 * var(--u)); }
+
+@media (max-width: 1023.98px) {
+  .about { margin-top: 32px; }
+  .about__inner {
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .about__media {
+    position: relative;
+    height: 418px;
+  }
+
+  .about__shape {
+    left: -140px;
+    top: -26px;
+    bottom: auto;
+    width: 551px;
+    height: 443px;
+  }
+  .about__shape::after {
+    background: radial-gradient(1007.363px 688.782px at 378.275px 291.958px, #fff, rgb(255 255 255 / 0));
+  }
+
+  .about__texture--1 {
+    left: -35.565px;
+    top: 119.605px;
+    width: 480.182px;
+    mask-position: 48.7px 0;
+    mask-size: 389.6px 389.6px;
+  }
+  .about__texture--2 {
+    left: 212.867px;
+    top: -2.661px;
+    width: 401.368px;
+    background-position: -137.79px -25.326px;
+    mask-position: 40.707px 0;
+    mask-size: 325.653px 325.653px;
+  }
+  .about__texture--3 {
+    left: -85.497px;
+    top: -28.24px;
+    width: 530.937px;
+    mask-position: 102.212px 0;
+    mask-size: 283.923px 283.923px;
+  }
+
+  .about__image {
+    left: -131px;
+    top: -19px;
+    bottom: auto;
+    width: 654px;
+  }
+
+  .about__content {
+    width: auto;
+    margin-top: 27px;
+    padding: 0 32px;
+  }
+  .about__text {
+    gap: 24px;
+    min-height: 0;
+  }
+  .about__title { font-size: 24px; }
+  .about__desc {
+    max-width: none;
+    font-size: 16px;
+  }
+  .about__cta { margin: 16px 0 0; }
+}

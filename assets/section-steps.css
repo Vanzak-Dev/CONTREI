@@ -1,0 +1,272 @@
+/* Frame do Figma: 1920×709 (mobile: 393×1627, com a arte num bloco de 393×418 no fim) */
+.steps {
+  overflow: hidden;
+  /* no Figma as seções do desktop ficam a 2px uma da outra */
+  margin-top: calc(2 * var(--u));
+  background: #fff;
+}
+
+.steps__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: calc(64 * var(--u));
+  /* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+  width: calc(1920 * var(--u));
+  margin-left: calc(50% - 960 * var(--u));
+  padding: calc(64 * var(--u)) calc(200 * var(--u));
+}
+
+/* o conteúdo fica por cima da arte */
+.steps__heading,
+.steps__cards,
+.steps__cta { position: relative; }
+
+/* ---------- arte ---------- */
+
+.steps__art {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.steps__shape {
+  position: absolute;
+  left: calc(1099 * var(--u));
+  top: calc(-58.97 * var(--u));
+  width: calc(827.365 * var(--u));
+  height: calc(1189.484 * var(--u));
+  rotate: 180deg;
+  mask: url("./steps-forma.svg") 0 0 / 100% 100% no-repeat;
+}
+.steps__shape-inner {
+  position: absolute;
+  inset: 0;
+  rotate: 180deg;
+  background: #99ddf7;
+}
+.steps__texture {
+  position: absolute;
+  left: calc(18.364 * var(--u));
+  top: calc(60.057 * var(--u));
+  width: calc(1864.136 * var(--u));
+  height: calc(1242.909 * var(--u));
+  max-width: none;
+  mix-blend-mode: soft-light;
+  opacity: 0.7;
+}
+/* brilho branco por cima da textura, recortado pela forma */
+.steps__shape-inner::after {
+  content: "";
+  position: absolute;
+  left: calc(-764.5 * var(--u));
+  top: calc(-407.034 * var(--u));
+  width: calc(1942 * var(--u));
+  height: calc(1329 * var(--u));
+  background: radial-gradient(closest-side, #fff, rgb(255 255 255 / 0));
+}
+
+.steps__glow { display: none; }
+
+.steps__image {
+  position: absolute;
+  left: calc(914 * var(--u));
+  top: calc(-95 * var(--u));
+  width: calc(1274.844 * var(--u));
+  height: auto;
+  max-width: none;
+}
+
+/* ---------- conteúdo ---------- */
+
+.steps__eyebrow {
+  margin: 0;
+  color: rgb(57 54 104 / 0.7);
+  font-size: 16px;
+  line-height: 1.55;
+}
+
+/* largura das linhas do Figma: sem ela, com o layout encolhido, o título invade a arte */
+.steps__title {
+  max-width: 740px;
+  margin: 0;
+  font-size: 48px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.steps__cards {
+  display: flex;
+  align-items: flex-start;
+  gap: calc(32 * var(--u));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.steps__card {
+  display: flex;
+  flex-direction: column;
+  gap: calc(20 * var(--u));
+  width: calc(278.5 * var(--u));
+  padding: calc(32 * var(--u));
+  border-radius: 12px;
+  background: var(--color-surface);
+  transition: translate 0.3s, background-color 0.3s, box-shadow 0.3s;
+}
+/* hover não existe no Figma; só em dispositivos com mouse, e sem movimento para quem pede movimento reduzido */
+@media (hover: hover) {
+  .steps__card:hover {
+    background: #fff;
+    box-shadow: 0 12px 32px rgb(57 54 104 / 0.12);
+  }
+}
+@media (hover: hover) and (prefers-reduced-motion: no-preference) {
+  .steps__card:hover { translate: 0 -4px; }
+}
+/* no Figma o primeiro e o último card têm altura fixa (247) e são 0,5px mais estreitos */
+.steps__card:first-child,
+.steps__card:last-child {
+  width: calc(278 * var(--u));
+  min-height: calc(247 * var(--u));
+}
+
+.steps__card-head {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+}
+
+.steps__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(48 * var(--u));
+  height: calc(48 * var(--u));
+}
+/* posição de cada ícone dentro do quadro de 48 (em %, vale também para o de 32 do mobile) */
+.steps__icon-img {
+  position: absolute;
+  max-width: none;
+}
+.steps__icon-img--diagnostico { left: 19.84%; top: 2.66%; width: 60.47%; height: 94.53%; }
+.steps__icon-img--esocial { left: 10.55%; top: 22.66%; width: 78.9%; height: 54.68%; rotate: -12deg; }
+.steps__icon-img--auditoria { left: 11.45%; top: 12.5%; width: 79.04%; height: 77.08%; }
+.steps__icon-img--plano { left: 0.05%; top: 3.8%; width: 97.82%; height: 96.72%; }
+.steps__icon-img--rede { left: 2.17%; top: 1.25%; width: 97.74%; height: 97.66%; }
+
+.steps__card-title {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 600;
+  line-height: 1.15;
+  white-space: nowrap;
+}
+
+.steps__card-text {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+/* com o layout encolhido e a fonte fixa, "Plano de Ação" não cabe numa linha ao lado do ícone */
+@media (min-width: 1024px) and (max-width: 1583.98px) {
+  .steps__card-title { white-space: normal; }
+}
+
+@media (max-width: 1023.98px) {
+  .steps {
+    margin-top: 32px;
+    background: none;
+  }
+
+  .steps__inner {
+    align-items: center;
+    gap: 32px;
+    width: auto;
+    margin-left: 0;
+    padding: 0;
+  }
+
+  .steps__heading {
+    align-self: stretch;
+    padding: 0 32px;
+    text-align: center;
+  }
+  .steps__eyebrow {
+    font-size: 14px;
+    line-height: normal;
+  }
+  .steps__title { font-size: 24px; }
+
+  .steps__cards {
+    flex-direction: column;
+    align-self: stretch;
+    align-items: stretch;
+    gap: 16px;
+    padding: 0 32px;
+  }
+  .steps__card,
+  .steps__card:first-child,
+  .steps__card:last-child {
+    width: auto;
+    min-height: 0;
+    padding: 32px;
+  }
+  .steps__card { gap: 20px; }
+  .steps__card-head {
+    justify-content: center;
+    gap: 16px;
+  }
+  .steps__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .steps__card-title { font-size: 20px; }
+  .steps__card-text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  /* no mobile a arte vira um bloco de 393×418 depois do botão */
+  .steps__art {
+    position: relative;
+    inset: auto;
+    order: 1;
+    align-self: stretch;
+    height: 418px;
+    overflow: hidden;
+  }
+  .steps__shape {
+    left: -42px;
+    top: -29px;
+    width: 435.354px;
+    height: 625.899px;
+  }
+  .steps__texture {
+    left: 9.663px;
+    top: 31.602px;
+    width: 980.897px;
+    height: 654.011px;
+  }
+  .steps__shape-inner::after {
+    left: -402.275px;
+    top: -214.179px;
+    width: 1021.868px;
+    height: 699.311px;
+  }
+  .steps__glow {
+    display: block;
+    position: absolute;
+    left: 7px;
+    top: -197px;
+    width: 614px;
+    height: 419px;
+    background: radial-gradient(closest-side, #fff, rgb(255 255 255 / 0));
+  }
+  .steps__image {
+    left: -140px;
+    top: -29px;
+    width: 672px;
+  }
+}
