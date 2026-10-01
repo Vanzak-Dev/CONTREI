@@ -43,7 +43,8 @@
   color: inherit;
   overflow: visible;
 }
-.header__nav a {
+.header__nav a,
+.header__nav summary {
   color: var(--color-primary);
   font-size: 20px;
   font-weight: 500;
@@ -57,6 +58,32 @@
   background: var(--color-accent);
   color: #fff;
 }
+
+/* ponytail: o submenu de Serviços não existe no Figma; painel simples no estilo dos cards */
+.header__dropdown { position: relative; }
+.header__dropdown summary {
+  list-style: none;
+  cursor: pointer;
+}
+.header__dropdown summary::-webkit-details-marker { display: none; }
+
+.header__submenu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: -16px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  padding: 8px;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 12px 32px rgb(57 54 104 / 0.12);
+}
+.header__submenu a {
+  padding: 8px;
+  border-radius: 8px;
+}
+.header__submenu a:hover { background: var(--color-surface); }
 
 @media (max-width: 1023.98px) {
   .header { padding: 16px; }
@@ -84,5 +111,19 @@
   }
   .header__nav a { font-size: 20px; }
   .header__nav .header__cta { padding: 13px 28px; }
+
+  /* no menu mobile o submenu abre logo abaixo de "Serviços" */
+  .header__dropdown { text-align: center; }
+  .header__submenu {
+    position: static;
+    padding: 16px 0 0;
+    background: none;
+    box-shadow: none;
+  }
+  .header__submenu a {
+    padding: 0;
+    color: rgb(57 54 104 / 0.7);
+    font-size: 16px;
+  }
   .header__nav:not(:popover-open) { display: none; }
 }
