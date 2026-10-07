@@ -1,12 +1,12 @@
 import Image from 'next/image';
 import '../assets/section-about.css';
-import medico from '../assets/about-medico.png';
+import medico from '../assets/about-medico.webp';
 import setaDesktop from '../assets/icon-arrow-desktop.svg';
 import setaMobile from '../assets/icon-arrow-mobile.svg';
 
 export default function About() {
   return (
-    <section className="about">
+    <section id="sobre" className="about">
       <div className="about__inner">
         <div className="about__media">
           <div className="about__shape">

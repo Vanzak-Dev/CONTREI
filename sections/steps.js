@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import '../assets/section-steps.css';
-import textura from '../assets/steps-textura.jpg';
-import prancheta from '../assets/steps-prancheta.png';
+import textura from '../assets/steps-textura.webp';
+import prancheta from '../assets/steps-prancheta.webp';
 import iconDiagnostico from '../assets/steps-icon-diagnostico.svg';
 import iconEsocial from '../assets/steps-icon-esocial.svg';
 import iconAuditoria from '../assets/steps-icon-auditoria.svg';

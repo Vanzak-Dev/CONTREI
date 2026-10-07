@@ -1,0 +1,132 @@
+/* Frame do Figma: 1920×574, fundo --color-surface, 64 de padding em cima e embaixo; colado no hero (mobile: sem Figma, segue o <Stats>) */
+.feature-cards {
+  display: flex;
+  flex-direction: column;
+  gap: calc(64 * var(--u));
+  padding: calc(64 * var(--u)) calc(50% - 760 * var(--u));
+  background: var(--color-surface);
+  text-align: center;
+}
+
+/* o Figma usa line-height 1,55 no texto de apoio (o .eyebrow base é "normal") */
+@media (min-width: 1024px) {
+  .feature-cards .eyebrow { line-height: 1.55; }
+}
+
+/* ---------- desktop: o slider vira linhas de 3 blocos; a última linha (1 ou 2) fica centralizada ---------- */
+
+.feature-cards__slider .slider__track {
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: calc(20 * var(--u));
+  overflow: visible;
+}
+.feature-cards__slider .slider__slide {
+  flex: 0 0 calc((100% - 40 * var(--u)) / 3);
+  overflow: visible;
+}
+.feature-cards__slider .slider__arrow,
+.feature-cards__slider .slider__dots { display: none; }
+
+.feature-cards__card {
+  /* faixa de cima: 10 no Figma, do azul escuro ao --color-accent */
+  --band: calc(10 * var(--u));
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+  height: 100%;
+  padding: calc(var(--band) + 32 * var(--u)) calc(32 * var(--u)) calc(32 * var(--u));
+  border-radius: 12px;
+  background:
+    linear-gradient(90deg, #14203d, var(--color-accent)) top / 100% var(--band) no-repeat,
+    #fff;
+  text-align: left;
+}
+
+.feature-cards__card-head {
+  display: flex;
+  align-items: center;
+  gap: calc(32 * var(--u));
+}
+
+/* ícone de 48 num quadro de 50 (mobile: 30,72 em 32 — mesma proporção) */
+.feature-cards__icon {
+  position: relative;
+  flex-shrink: 0;
+  width: calc(50 * var(--u));
+  height: calc(50 * var(--u));
+}
+.feature-cards__icon-img {
+  position: absolute;
+  left: 11.1%;
+  top: 18.55%;
+  width: 79.8%;
+  height: 76.9%;
+  max-width: none;
+}
+
+.feature-cards__card-title {
+  flex: 1;
+  min-width: 0;
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.feature-cards__card-text {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+@media (max-width: 1023.98px) {
+  .feature-cards {
+    gap: 32px;
+    padding: 32px 0;
+  }
+  .feature-cards__heading { padding: 0 32px; }
+
+  /* ---------- mobile: carrossel de um bloco por vez, dots 16px abaixo ---------- */
+  .feature-cards__slider { padding-bottom: 26px; }
+  .feature-cards__slider .slider__track {
+    flex-wrap: nowrap;
+    justify-content: flex-start;
+    gap: 0;
+    overflow: auto hidden;
+  }
+  .feature-cards__slider .slider__slide {
+    flex: 0 0 100%;
+    padding: 0 32px;
+  }
+  .feature-cards__slider .slider__dots {
+    display: block;
+    bottom: 0;
+  }
+  .feature-cards .dots__dot:not([aria-current='true']) { background: var(--color-primary); }
+
+  .feature-cards__card {
+    --band: 6px;
+    gap: 20px;
+    padding: calc(var(--band) + 32px) 32px 32px;
+  }
+  .feature-cards__card-head {
+    justify-content: center;
+    gap: 16px;
+  }
+  .feature-cards__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .feature-cards__card-title {
+    flex: 0 1 auto;
+    font-size: 20px;
+    font-weight: 600;
+    text-wrap: balance;
+  }
+  .feature-cards__card-text {
+    font-size: 16px;
+    text-align: center;
+    text-wrap: balance;
+  }
+}

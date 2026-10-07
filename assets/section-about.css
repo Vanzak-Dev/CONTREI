@@ -54,7 +54,7 @@
   left: calc(-157.229 * var(--u));
   top: calc(236.333 * var(--u));
   width: calc(948.816 * var(--u));
-  background-image: url("./about-textura-1.png");
+  background-image: url("./about-textura-1.webp");
   mask: url("./about-circulo.svg") calc(96.229 * var(--u)) 0 / calc(769.83 * var(--u)) calc(769.83 * var(--u)) no-repeat;
 }
 /* no Figma essa imagem fica deslocada dentro do quadrado: 123,84% × 92,88% em -34,33% / -6,31% */
@@ -62,14 +62,14 @@
   left: calc(333.662 * var(--u));
   top: calc(-5.259 * var(--u));
   width: calc(793.082 * var(--u));
-  background: url("./about-textura-2.png") calc(-272.265 * var(--u)) calc(-50.043 * var(--u)) / 123.84% 92.88% no-repeat;
+  background: url("./about-textura-2.webp") calc(-272.265 * var(--u)) calc(-50.043 * var(--u)) / 123.84% 92.88% no-repeat;
   mask: url("./about-circulo.svg") calc(80.434 * var(--u)) 0 / calc(643.475 * var(--u)) calc(643.475 * var(--u)) no-repeat;
 }
 .about__texture--3 {
   left: calc(-255.891 * var(--u));
   top: calc(-55.801 * var(--u));
   width: calc(1049.105 * var(--u));
-  background-image: url("./about-textura-3.png");
+  background-image: url("./about-textura-3.webp");
   mask: url("./about-circulo.svg") calc(201.967 * var(--u)) 0 / calc(561.019 * var(--u)) calc(561.019 * var(--u)) no-repeat;
 }
 
@@ -113,6 +113,29 @@
 }
 
 .about__cta { margin: calc(32 * var(--u)) 0 0 calc(4 * var(--u)); }
+
+/*
+  Contato (Figma 504:2428): a mesma arte do "Sobre" (forma e texturas idênticas), com a foto espelhada
+  colada no rodapé do frame de 680px e o texto centralizado na altura.
+*/
+.about--contact .about__image { transform: scaleX(-1); }
+
+@media (min-width: 1024px) {
+  .about--contact .about__inner {
+    display: flex;
+    align-items: center;
+    min-height: calc(680 * var(--u));
+    padding: 0 0 0 calc(1079 * var(--u));
+  }
+  .about--contact .about__content { width: calc(641 * var(--u)); }
+  .about--contact .about__text { min-height: 0; }
+  .about--contact .about__cta { margin: calc(32 * var(--u)) 0 0; }
+  .about--contact .about__image {
+    left: calc(-68 * var(--u));
+    bottom: 0;
+    width: calc(1299 * var(--u));
+  }
+}
 
 @media (max-width: 1023.98px) {
   .about { margin-top: 32px; }
@@ -183,4 +206,12 @@
     font-size: 16px;
   }
   .about__cta { margin: 16px 0 0; }
+
+  /* Contato: mesma estrutura do "Sobre" (arte em cima, textos + botão embaixo), foto centralizada e colada na base */
+  .about--contact .about__image {
+    left: calc(50% - 336px);
+    top: auto;
+    bottom: 0;
+    width: 700px;
+  }
 }

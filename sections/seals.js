@@ -1,9 +1,9 @@
 import Image from 'next/image';
 import '../assets/section-seals.css';
 import lines from '../snippets/lines';
-import iso27001 from '../assets/seals-iso27001.png';
-import abresst from '../assets/seals-abresst.png';
-import iso9001 from '../assets/seals-iso9001.png';
+import iso27001 from '../assets/seals-iso27001.webp';
+import abresst from '../assets/seals-abresst.webp';
+import iso9001 from '../assets/seals-iso9001.webp';
 
 const seals = [
   ['iso27001', iso27001, 'Selo SAS Certificadora NBR ISO/IEC 27001:2022', 'Proteção[m] de Dados[d] e[m] Segurança[d] da[m] Informação'],

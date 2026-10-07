@@ -1,11 +1,11 @@
 import Image from 'next/image';
 import '../assets/section-clients.css';
-import minerva from '../assets/clients-minerva.png';
-import minasGerais from '../assets/clients-minas-gerais.png';
-import ge from '../assets/clients-ge.png';
-import sebrae from '../assets/clients-sebrae.png';
-import senac from '../assets/clients-senac.png';
-import gerdau from '../assets/clients-gerdau.png';
+import minerva from '../assets/clients-minerva.webp';
+import minasGerais from '../assets/clients-minas-gerais.webp';
+import ge from '../assets/clients-ge.webp';
+import sebrae from '../assets/clients-sebrae.webp';
+import senac from '../assets/clients-senac.webp';
+import gerdau from '../assets/clients-gerdau.webp';
 
 const logos = [
   [minerva, 'Minerva Foods'],

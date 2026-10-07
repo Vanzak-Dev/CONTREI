@@ -2,7 +2,7 @@ import Image from 'next/image';
 import '../assets/section-benefits.css';
 import Slider from '../snippets/slider';
 import lines from '../snippets/lines';
-import mulher from '../assets/benefits-mulher.jpg';
+import mulher from '../assets/benefits-mulher.webp';
 import iconObrigacoes from '../assets/benefits-icon-obrigacoes.svg';
 import iconClinicas from '../assets/benefits-icon-clinicas.svg';
 import iconBi from '../assets/benefits-icon-bi.svg';

@@ -76,6 +76,23 @@
   line-height: normal;
 }
 
+/*
+  Nossos Serviços (Figma 504:3453, 1920×595): sem preenchimento próprio (fica no fundo da página),
+  colado no hero (sem os 2px entre seções) e com 64 de padding em cima e embaixo.
+  Os ícones são o quadro de 50×50 inteiro, então ocupam 100% em vez dos 96%.
+*/
+.stats--servicos { background: var(--color-background); }
+@media (min-width: 1024px) {
+  .stats--servicos {
+    margin-top: 0;
+    padding-block: calc(64 * var(--u));
+  }
+  /* o Figma mede o bloco "4 Áreas / de Atuação" em 126px, com as duas linhas mais coladas (o line-height 1.15 dá 128,8) */
+  .stats--servicos .stats__value { margin-top: 1px; }
+  .stats--servicos .stats__label { margin-top: -4px; }
+}
+.stats--servicos .stats__icon-img { width: 100%; }
+
 @media (max-width: 1023.98px) {
   .stats {
     gap: 32px;
@@ -117,4 +134,18 @@
   .stats__value { font-size: 64px; }
   .stats__label { font-size: 48px; }
   .stats__desc { font-size: 24px; }
+
+  /*
+    Serviços: mesma escala de tamanhos do resto da home no mobile (o 64/48/24 do Stats ficava maior
+    que o título e o hero): número 24 (título de seção), rótulo 20 (título de card) e descrição 16
+    (texto corrido), com 32px de respiro dos lados (como o título) e linhas equilibradas.
+  */
+  .stats--servicos .stats__item { padding: 16px 32px; }
+  .stats--servicos .stats__value { font-size: 24px; }
+  .stats--servicos .stats__label { font-size: 20px; }
+  .stats--servicos .stats__desc {
+    margin-top: 8px;
+    font-size: 16px;
+    text-wrap: balance;
+  }
 }

@@ -1,0 +1,280 @@
+/*
+  Categorias de serviços (Figma 504:3452 + variações 504:5795/5858/5924; mobile 515:1440/1379/1501/1565).
+  Desktop: frame de 1920×650 com o card à esquerda, o anel no centro e a foto da categoria à direita.
+  As 4 fotos e os 4 anéis ficam empilhados: o ativo aparece por cima com fade e só então o anterior some
+  (assim o quadrante passa do azul claro ao escuro sem "piscar" no meio da troca).
+*/
+.categories {
+  position: relative;
+  overflow: hidden;
+  background: #f2fbfe;
+}
+
+/* frame de 1920 (em escala) centralizado; em telas menores as laterais são cortadas */
+.categories__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: calc(1920 * var(--u));
+  min-height: calc(650 * var(--u));
+  margin-left: calc(50% - 960 * var(--u));
+  /* só faz diferença quando o card (fontes fixas) fica mais alto que os 650 em escala */
+  padding-block: 32px;
+}
+
+/* ---------- fotos ---------- */
+
+.categories__photos {
+  position: absolute;
+  inset: 0;
+  isolation: isolate;
+  pointer-events: none;
+}
+/* degradê do Figma: sólido até a metade do frame, transparente a partir de 80% */
+.categories__photos::after {
+  content: '';
+  position: absolute;
+  z-index: 2;
+  inset: 0;
+  background: linear-gradient(to right, #f2fbfe 50%, rgb(242 251 254 / 0) 80.182%);
+}
+
+/*
+  Cada foto tem a largura e o x do Figma; a altura acompanha o frame e o object-position reproduz o y do Figma
+  (y ÷ (650 − altura da foto)). Se o frame crescer, o cover amplia a foto em vez de deixar faixa vazia.
+*/
+.categories__photo {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  max-width: none;
+  object-fit: cover;
+  opacity: 0;
+}
+.categories__photo.is-active {
+  z-index: 1;
+  opacity: 1;
+}
+.categories__photo--gestao { left: calc(625.73 * var(--u)); width: calc(1396.42 * var(--u)); object-position: 0 32.73%; }
+.categories__photo--saude { left: calc(891.84 * var(--u)); width: calc(1592.64 * var(--u)); object-position: 0 59.71%; }
+.categories__photo--tecnologia { left: calc(850.56 * var(--u)); width: calc(1424.83 * var(--u)); object-position: 0 0; }
+.categories__photo--consultoria { left: calc(568.9 * var(--u)); width: calc(1484.35 * var(--u)); object-position: 0 41.54%; }
+
+/* ---------- anel ---------- */
+
+/* o SVG é o grupo do Figma mobile (392×392) ampliado 1,6×, com o grupo dos quadrantes em 705,64 como no desktop */
+.categories__ring {
+  position: absolute;
+  left: calc(647.14 * var(--u));
+  top: calc(50% - 312.86 * var(--u));
+  width: calc(627.1 * var(--u));
+  aspect-ratio: 1;
+  isolation: isolate;
+}
+
+.categories__ring-img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  pointer-events: none;
+}
+.categories__ring-img.is-active {
+  z-index: 1;
+  opacity: 1;
+}
+
+/* área clicável de cada quadrante, em % do quadro de 392 */
+.categories__slice {
+  position: absolute;
+  z-index: 2;
+  width: 39.64%;
+  height: 40.56%;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: none;
+  cursor: pointer;
+}
+.categories__slice:focus-visible { outline: 2px solid var(--color-accent); }
+.categories__slice--gestao { left: 9.23%; top: 8.21%; }
+.categories__slice--saude { left: 51.01%; top: 8.21%; }
+.categories__slice--tecnologia { left: 9.23%; top: 51.01%; }
+.categories__slice--consultoria { left: 51.01%; top: 51.01%; }
+
+/* ---------- card ---------- */
+
+.categories__card {
+  position: relative;
+  width: calc(473 * var(--u));
+  margin-left: calc(200 * var(--u));
+  padding-right: calc(32 * var(--u));
+  border-radius: 12px;
+  background: var(--color-surface);
+}
+
+.categories__content,
+.categories__actions {
+  display: flex;
+  flex-direction: column;
+  gap: calc(32 * var(--u));
+}
+.categories__actions { align-items: flex-start; }
+
+.categories__text {
+  display: flex;
+  flex-direction: column;
+  gap: calc(16 * var(--u));
+}
+
+.categories__head {
+  display: flex;
+  align-items: center;
+  gap: calc(32 * var(--u));
+}
+
+.categories__icon {
+  flex-shrink: 0;
+  width: calc(50 * var(--u));
+  height: calc(50 * var(--u));
+}
+
+.categories__title {
+  margin: 0;
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+.categories__desc {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+.categories__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* contorno por dentro, como o stroke do Figma (28px de altura no total) */
+.categories__tag {
+  padding: 5px 9px;
+  border-radius: 999px;
+  box-shadow: inset 0 0 0 1px var(--color-accent);
+  color: var(--color-accent);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 17.83px;
+  white-space: nowrap;
+}
+
+/* ---------- animação da troca ---------- */
+
+@media (prefers-reduced-motion: no-preference) {
+  .categories__photo,
+  .categories__ring-img { transition: opacity 0s 0.5s; }
+  .categories__photo.is-active,
+  .categories__ring-img.is-active { transition: opacity 0.5s ease; }
+  .categories__content { animation: categories-in 0.5s ease; }
+}
+
+@keyframes categories-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+}
+
+/* ---------- mobile (393×1036; a altura cresce com o card) ---------- */
+
+@media (max-width: 1023.98px) {
+  .categories {
+    background:
+      url("data:image/svg+xml;utf8,<svg viewBox='0 0 393 1036' xmlns='http://www.w3.org/2000/svg' preserveAspectRatio='none'><rect x='0' y='0' height='100%' width='100%' fill='url(%23grad)' opacity='0.6299999952316284'/><defs><radialGradient id='grad' gradientUnits='userSpaceOnUse' cx='0' cy='0' r='10' gradientTransform='matrix(-15.904 -81.502 44.466 -317.86 196.5 630.13)'><stop stop-color='rgba(255,255,255,0)' offset='0'/><stop stop-color='rgba(255,255,255,1)' offset='1'/></radialGradient></defs></svg>")
+        0 0 / 100% 100% no-repeat,
+      #f2fbfe;
+  }
+
+  /*
+    Foto e anel ocupam os primeiros 667,75px; o frame tem no mínimo 1036 com o card encostado embaixo
+    (Tecnologia, de título curto, fica com o card mais baixo) e cresce quando o card é mais alto.
+  */
+  .categories__inner {
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: flex-start;
+    width: 393px;
+    min-height: 1036px;
+    margin-left: calc(50% - 196.5px);
+    padding: 667.75px 0 0;
+  }
+  /* Rectangle 204: véu claro no topo da foto */
+  .categories__inner::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: -272px;
+    width: 393px;
+    height: 467px;
+    background: radial-gradient(2522.57px 234.43px at 196px 207.93px, #f2fbfe 16.41%, rgb(242 251 254 / 0) 75.48%);
+    pointer-events: none;
+  }
+
+  /* fotos num quadro de 672×448 (x −164), cada uma com o recorte do Figma */
+  .categories__photos {
+    inset: 0 auto auto -164px;
+    width: 672px;
+    height: 448px;
+    overflow: hidden;
+  }
+  .categories__photos::after {
+    background: linear-gradient(1.44deg, rgb(242 251 254 / 0) 83.715%, #f2fbfe 98.24%);
+  }
+  .categories__photo { width: 672px; height: 448px; }
+  .categories__photo--gestao { left: 0; top: 0; }
+  .categories__photo--saude { left: 94.15px; top: -19.98px; }
+  .categories__photo--tecnologia { left: 31.99px; top: -0.58px; height: 448.4px; }
+  .categories__photo--consultoria { left: -116.52px; top: -267.9px; height: 984.08px; }
+
+  .categories__ring {
+    left: 1px;
+    top: 276px;
+    width: 392px;
+  }
+  /* Rectangle 203: brilho claro atrás do anel */
+  .categories__ring::before {
+    content: '';
+    position: absolute;
+    left: -2px;
+    top: -43px;
+    width: 393px;
+    height: 412px;
+    background: radial-gradient(2522.6px 206.82px at 196px 206.82px, #f2fbfe 16.414%, rgb(242 251 254 / 0) 100%);
+  }
+
+  .categories__card {
+    width: 329px;
+    margin-left: 33px;
+    padding: 32px;
+    background: none;
+  }
+  .categories__content,
+  .categories__actions,
+  .categories__text,
+  .categories__head { gap: 16px; }
+  .categories__icon {
+    width: 32px;
+    height: 32px;
+  }
+  .categories__title {
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .categories__desc { font-size: 16px; }
+}

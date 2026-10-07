@@ -4,7 +4,7 @@ import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import '../assets/section-header.css';
-import logo from '../assets/logo.png';
+import logo from '../assets/logo.webp';
 import iconMenu from '../assets/icon-menu.svg';
 
 export default function Header() {
@@ -42,6 +42,10 @@ export default function Header() {
           <summary>Serviços</summary>
           <div className="header__submenu">
             <Link href="/nossos-servicos">Nossos Serviços</Link>
+            <Link href="/tecnologia">Tecnologia</Link>
+            <Link href="/consultoria">Consultoria</Link>
+            <Link href="/gestao">Gestão</Link>
+            <Link href="/saude">Saúde</Link>
           </div>
         </details>
         {/* com "/" na frente as âncoras funcionam também a partir das outras páginas */}

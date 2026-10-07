@@ -9,7 +9,7 @@
   font-variation-settings: "opsz" 14;
 }
 
-/* O PNG do logo tem margem; o Figma recorta com esses percentuais */
+/* O WebP do logo tem margem; o Figma recorta com esses percentuais */
 .header__logo {
   position: relative;
   flex-shrink: 0;
@@ -116,6 +116,7 @@
   .header__dropdown { text-align: center; }
   .header__submenu {
     position: static;
+    gap: 12px;
     padding: 16px 0 0;
     background: none;
     box-shadow: none;

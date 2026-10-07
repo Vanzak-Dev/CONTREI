@@ -1,32 +1,28 @@
 import Image from 'next/image';
 import '../assets/section-hero.css';
-import medica from '../assets/hero-medica.png';
-import textura from '../assets/hero-textura.jpg';
+import textura from '../assets/hero-textura.webp';
 import setaDesktop from '../assets/icon-arrow-desktop.svg';
 import setaMobile from '../assets/icon-arrow-mobile.svg';
 
-export default function Hero() {
+// `variant` vira o modificador `hero--{variant}` (posições da foto/textos de cada página); aceita vários, separados por espaço
+// `image` é opcional: hero só com textura (ex.: Consultoria)
+export default function Hero({ variant = '', image, alt, sizes, title, text, cta }) {
   return (
-    <section className="hero">
+    <section className={['hero', ...variant.split(' ').filter(Boolean).map((v) => `hero--${v}`)].join(' ')}>
       <Image src={textura} alt="" sizes="100vw" className="hero__texture" />
       <Image src={textura} alt="" sizes="100vw" className="hero__texture hero__texture--mirror" />
       <div className="hero__inner">
-        <Image
-          src={medica}
-          alt="Médica examinando um paciente com estetoscópio"
-          sizes="(min-width: 1024px) min(52.3vw, 1004px), 506px"
-          loading="eager"
-          fetchPriority="high"
-          className="hero__image"
-        />
-        <span className="hero__fade" />
-        <h1 className="hero__title">Pioneirismo na Medicina e Segurança do Trabalho</h1>
+        {image && (
+          <>
+            <Image src={image} alt={alt} sizes={sizes} loading="eager" fetchPriority="high" className="hero__image" />
+            <span className="hero__fade" />
+          </>
+        )}
+        <h1 className="hero__title">{title}</h1>
         <div className="hero__content">
-          <p className="hero__text">
-            Tecnologia e atendimento exclusivo para a gestão completa de Saúde, Ergonomia e Segurança do Trabalho.
-          </p>
-          <a href="#proposta" className="button hero__cta">
-            Solicitar Proposta
+          <p className="hero__text">{text}</p>
+          <a href={cta.href} className="button hero__cta">
+            {cta.label}
             <img src={setaDesktop.src} alt="" className="button__arrow button__arrow--desktop" />
             <img src={setaMobile.src} alt="" className="button__arrow button__arrow--mobile" />
           </a>

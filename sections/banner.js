@@ -1,8 +1,8 @@
 import Image from 'next/image';
 import '../assets/section-banner.css';
 import Slider from '../snippets/slider';
-import pessoas from '../assets/banner-pessoas.png';
-import textura from '../assets/banner-textura.jpg';
+import pessoas from '../assets/banner-pessoas.webp';
+import textura from '../assets/banner-textura.webp';
 
 // cada filho do <Slider> é um slide; com mais de um aparecem as setas e os dots
 export default function Banner() {

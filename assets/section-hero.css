@@ -76,6 +76,191 @@
   line-height: normal;
 }
 
+/*
+  Nossos Serviços (Figma 26:3149): foto da equipe colada no rodapé com véu claro na diagonal
+  (a foto é 1053×730 e o Figma recorta 3,85% dela à esquerda: 96,4% no object-position).
+*/
+@media (min-width: 1024px) {
+  .hero--servicos .hero__image,
+  .hero--servicos .hero__fade {
+    left: calc(447 * var(--u));
+    top: auto;
+    bottom: 0;
+    width: calc(1053 * var(--u));
+    height: calc(730 * var(--u));
+  }
+  .hero--servicos .hero__image { object-position: 96.4% 0; }
+  .hero--servicos .hero__fade {
+    display: block;
+    position: absolute;
+    background: linear-gradient(182.9deg, rgb(251 252 252 / 0) 28.798%, rgb(251 252 252 / 0.5) 114.45%);
+  }
+  .hero--servicos .hero__title {
+    top: calc(231 * var(--u));
+    width: 467px;
+  }
+  /*
+    80px mais à direita que no Figma (200) para o texto e o botão não encostarem no braço do homem.
+    O 2º valor do max() trava nos 32px de respiro da tela, então em telas estreitas volta aos 200 do Figma.
+  */
+  .hero--servicos .hero__content {
+    right: max(calc(120 * var(--u)), calc(960 * var(--u) + 32px - 50vw));
+    top: calc(219 * var(--u));
+    width: 331px;
+  }
+  /* o bloco tem largura fixa, então as quebras manuais do Figma valem desde 1024px (e não só em 1:1) */
+  .hero--servicos .br-desktop { display: inline; }
+}
+
+/*
+  Tecnologia (Figma 504:3613): foto da médica (WebP recortado 1727×911, mostrado em 1220×643) colada na base do hero
+  (o Figma corta 11px do rodapé dela). Por cima dela vão dois véus radiais #f4fcff → transparente, que clareiam a foto
+  atrás do título (elipse 352×311 em 483,186) e do texto (elipse 605,5×724 em 1497,354), ambos num único .hero__fade.
+  Título de 5 linhas à esquerda, texto e botão à direita. As quebras são as do Figma; os blocos têm largura fixa,
+  então valem desde 1024px. A altura mínima impede o título (368px) de ser cortado perto de 1024px.
+*/
+@media (min-width: 1024px) {
+  .hero--tecnologia { height: max(calc(702 * var(--u)), 520px); }
+  .hero--tecnologia .hero__image {
+    left: calc(323 * var(--u));
+    top: auto;
+    bottom: calc(-11 * var(--u));
+    width: calc(1220 * var(--u));
+    height: calc(643 * var(--u));
+  }
+  .hero--tecnologia .hero__fade {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(1497.5 * var(--u)) calc(354 * var(--u)), #f4fcff, rgb(244 252 255 / 0)),
+      radial-gradient(ellipse calc(352 * var(--u)) calc(311 * var(--u)) at calc(483 * var(--u)) calc(186 * var(--u)), #f4fcff, rgb(244 252 255 / 0));
+  }
+  .hero--tecnologia .hero__title {
+    left: calc(200 * var(--u));
+    top: calc(163 * var(--u));
+    width: 509px;
+  }
+  .hero--tecnologia .hero__content {
+    right: calc(200 * var(--u));
+    top: calc(225 * var(--u));
+    width: 469px;
+  }
+  .hero--tecnologia .br-desktop { display: inline; }
+}
+
+/*
+  Gestão (Figma 504:4143): foto da executiva (1557×822 em 163,-28; o Figma corta o que passa da base do hero).
+  Por cima dela vão dois véus radiais #f4fcff → transparente (elipses 605,5×724, uma em 1450,5×683 e outra em
+  468,5×255 — os retângulos 530:870 e 530:871 do Figma), ambos num único .hero__fade. Título de 4 linhas à esquerda,
+  texto e botão à direita. As quebras do texto são as do Figma; o bloco tem largura fixa, então valem desde 1024px.
+  A altura mínima impede o título (294px) de ficar colado na base perto de 1024px.
+*/
+@media (min-width: 1024px) {
+  .hero--gestao { height: max(calc(702 * var(--u)), 480px); }
+  .hero--gestao .hero__image {
+    left: calc(163 * var(--u));
+    top: calc(-28 * var(--u));
+    width: calc(1557 * var(--u));
+    height: calc(822 * var(--u));
+  }
+  .hero--gestao .hero__fade {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(1450.5 * var(--u)) calc(683 * var(--u)), #f4fcff, rgb(244 252 255 / 0)),
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(468.5 * var(--u)) calc(255 * var(--u)), #f4fcff, rgb(244 252 255 / 0));
+  }
+  .hero--gestao .hero__title {
+    left: calc(200 * var(--u));
+    top: calc(193 * var(--u));
+    width: 509px;
+  }
+  .hero--gestao .hero__content {
+    right: calc(200 * var(--u));
+    top: calc(227 * var(--u));
+    width: 469px;
+  }
+  .hero--gestao .br-desktop { display: inline; }
+}
+
+/*
+  Consultoria (Figma 504:3860): foto da engenheira (1116×744) colada na base do hero. Por cima dela vão dois véus
+  radiais #f4fcff → transparente (elipses 605,5×724, uma em 1542,5×642 e outra em 494,5×275 — os retângulos
+  530:866 e 530:868 do Figma), ambos num único .hero__fade. Título de 6 linhas à esquerda, texto e botão à direita.
+  As quebras do texto são as do Figma; o bloco tem largura fixa, então valem desde 1024px.
+  A altura mínima impede o título (~442px) de ser cortado perto de 1024px.
+*/
+@media (min-width: 1024px) {
+  .hero--consultoria { height: max(calc(702 * var(--u)), 600px); }
+  .hero--consultoria .hero__image {
+    left: calc(454 * var(--u));
+    top: auto;
+    bottom: 0;
+    width: calc(1116 * var(--u));
+    height: calc(744 * var(--u));
+  }
+  .hero--consultoria .hero__fade {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(1542.5 * var(--u)) calc(642 * var(--u)), #f4fcff, rgb(244 252 255 / 0)),
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(494.5 * var(--u)) calc(275 * var(--u)), #f4fcff, rgb(244 252 255 / 0));
+  }
+  .hero--consultoria .hero__title {
+    left: calc(200 * var(--u));
+    top: calc(119 * var(--u));
+    /* o box do Figma tem 509px, mas lá "técnica pericial" (465px) não cabe na linha: 450px reproduz as 6 linhas */
+    width: 450px;
+  }
+  .hero--consultoria .hero__content {
+    right: calc(200 * var(--u));
+    top: calc(227 * var(--u));
+    width: 400px;
+  }
+  .hero--consultoria .br-desktop { display: inline; }
+}
+
+/*
+  Saúde (Figma 504:4418): foto num quadro de 897×890 em 566,-76 (o Figma corta o que passa da base do hero). O WebP é um recorte
+  16:9 (4096×2304) com uma 3ª pessoa à esquerda que o quadro esconde, então a foto vai com altura cheia e colada à direita
+  (object-position 100%). Por cima dela vão dois véus radiais #f4fcff → transparente (elipses 605,5×724, uma em 1618,5×741 e
+  outra em 416,5×140 — os retângulos 533:874 e 533:875 do Figma), ambos num único .hero__fade. Título de 5 linhas à esquerda,
+  texto e botão à direita (iguais aos de Gestão). As quebras do texto são as do Figma; os blocos têm largura fixa, então valem
+  desde 1024px. A altura mínima impede o título (368px) de ser cortado perto de 1024px.
+*/
+@media (min-width: 1024px) {
+  .hero--saude { height: max(calc(702 * var(--u)), 520px); }
+  .hero--saude .hero__image {
+    left: calc(566 * var(--u));
+    top: calc(-76 * var(--u));
+    width: calc(897 * var(--u));
+    height: calc(890 * var(--u));
+    object-position: 100% 0;
+  }
+  .hero--saude .hero__fade {
+    display: block;
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(1618.5 * var(--u)) calc(741 * var(--u)), #f4fcff, rgb(244 252 255 / 0)),
+      radial-gradient(ellipse calc(605.5 * var(--u)) calc(724 * var(--u)) at calc(416.5 * var(--u)) calc(140 * var(--u)), #f4fcff, rgb(244 252 255 / 0));
+  }
+  .hero--saude .hero__title {
+    left: calc(200 * var(--u));
+    top: calc(159 * var(--u));
+    width: 509px;
+  }
+  .hero--saude .hero__content {
+    right: calc(200 * var(--u));
+    top: calc(227 * var(--u));
+    width: 469px;
+  }
+  .hero--saude .br-desktop { display: inline; }
+}
+
 @media (max-width: 1023.98px) {
   .hero {
     height: 570px;
@@ -133,4 +318,80 @@
 
   /* no Figma o botão está 7,75px à direita do centro */
   .hero__cta { transform: translateX(7.75px); }
+
+  /* Nossos Serviços: foto horizontal logo abaixo do título, com a base esmaecida em vez do .hero__fade */
+  .hero--servicos { height: 548px; }
+  .hero--servicos .hero__title { width: 300px; }
+  .hero--servicos .hero__image {
+    left: calc(50% - 190px);
+    top: 84px;
+    width: 380px;
+    height: 263px;
+    object-position: 96.4% 0;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+  .hero--servicos .hero__fade { display: none; }
+  .hero--servicos .hero__content { top: 336px; width: 300px; }
+  .hero--servicos .hero__cta { transform: none; }
+
+  /* Consultoria: como em Nossos Serviços, foto horizontal logo abaixo do título (3 linhas) com a base esmaecida; sem os véus do desktop (o Figma não tem versão mobile) */
+  .hero--consultoria { height: 580px; }
+  .hero--consultoria .hero__title { top: 24px; width: 300px; }
+  .hero--consultoria .hero__image {
+    left: calc(50% - 190px);
+    top: 116px;
+    width: 380px;
+    height: 253px;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+  .hero--consultoria .hero__fade { display: none; }
+  .hero--consultoria .hero__content { top: 358px; width: 300px; }
+  .hero--consultoria .hero__cta { transform: none; }
+
+  /* Tecnologia: como em Nossos Serviços, foto horizontal logo abaixo do título (3 linhas) com a base esmaecida; sem os véus do desktop */
+  .hero--tecnologia { height: 544px; }
+  .hero--tecnologia .hero__title { top: 24px; width: 300px; }
+  .hero--tecnologia .hero__image {
+    left: calc(50% - 190px);
+    top: 120px;
+    width: 380px;
+    height: 200px;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+  .hero--tecnologia .hero__fade { display: none; }
+  .hero--tecnologia .hero__content { top: 310px; width: 300px; }
+  .hero--tecnologia .hero__cta { transform: none; }
+
+  /* Gestão: como em Tecnologia, foto horizontal logo abaixo do título (3 linhas) com a base esmaecida; sem os véus do desktop */
+  .hero--gestao { height: 544px; }
+  .hero--gestao .hero__title { top: 24px; width: 300px; }
+  .hero--gestao .hero__image {
+    left: calc(50% - 190px);
+    top: 120px;
+    width: 380px;
+    height: 200px;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+  .hero--gestao .hero__fade { display: none; }
+  .hero--gestao .hero__content { top: 310px; width: 300px; }
+  .hero--gestao .hero__cta { transform: none; }
+
+  /*
+    Saúde: como em Gestão, foto logo abaixo do título (3 linhas) com a base esmaecida; sem os véus do desktop.
+    O quadro tem só a parte direita do recorte (56,7% da largura de uma foto de 200px de altura), como no desktop,
+    para esconder a pessoa à esquerda.
+  */
+  .hero--saude { height: 544px; }
+  .hero--saude .hero__title { top: 24px; width: 300px; }
+  .hero--saude .hero__image {
+    left: calc(50% - 101px);
+    top: 120px;
+    width: 202px;
+    height: 200px;
+    object-position: 100% 0;
+    mask-image: linear-gradient(to bottom, #000 55%, transparent);
+  }
+  .hero--saude .hero__fade { display: none; }
+  .hero--saude .hero__content { top: 310px; width: 300px; }
+  .hero--saude .hero__cta { transform: none; }
 }

@@ -1,0 +1,104 @@
+/* Frame do Figma: 1920×726, fundo --color-primary, 64 de padding em cima e embaixo; colado no <Stats> (mobile: sem Figma, segue o <Footer>) */
+.faq {
+  display: flex;
+  align-items: center;
+  gap: calc(64 * var(--u));
+  padding: calc(64 * var(--u)) calc(50% - 760 * var(--u));
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* o título mantém a largura do Figma (450) e, com o layout encolhido, a lista é que estreita */
+.faq__heading {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: calc(24 * var(--u));
+  min-width: 450px;
+}
+.faq .eyebrow { color: rgb(255 255 255 / 0.7); }
+/* o Figma usa line-height 1,55 no texto de apoio (o .eyebrow base é "normal") */
+@media (min-width: 1024px) {
+  .faq .eyebrow { line-height: 1.55; }
+}
+
+.faq__text {
+  margin: 0;
+  font-size: 20px;
+  line-height: normal;
+}
+
+.faq__list {
+  flex: 0 1 calc(1006 * var(--u));
+  min-width: 0;
+}
+
+/* item de 16/32 de respiro; as linhas entre os itens ficam a 16 de cada um (+16 do respiro) */
+.faq__item { padding: calc(16 * var(--u)) calc(32 * var(--u)); }
+.faq__item + .faq__item {
+  margin-top: calc(15 * var(--u));
+  padding-top: calc(32 * var(--u));
+  border-top: 1px solid rgb(255 255 255 / 0.7);
+}
+
+.faq__question {
+  display: flex;
+  align-items: center;
+  gap: calc(16 * var(--u));
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.15;
+  cursor: pointer;
+  list-style: none;
+}
+.faq__question::-webkit-details-marker { display: none; }
+.faq__question::after {
+  content: "+";
+  flex-shrink: 0;
+  margin-left: auto;
+  font-weight: 800;
+  line-height: 17.83px;
+}
+.faq__item[open] > .faq__question::after { content: "-"; }
+
+.faq__answer {
+  margin: calc(16 * var(--u)) 0 0;
+  font-size: 24px;
+  line-height: normal;
+}
+
+@media (max-width: 1023.98px) {
+  .faq {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 32px;
+    padding: 32px;
+  }
+
+  .faq__heading {
+    gap: 16px;
+    min-width: 0;
+    text-align: center;
+  }
+  .faq .eyebrow { font-size: 14px; }
+  .faq__text {
+    font-size: 16px;
+    text-wrap: balance;
+  }
+  .faq .title { text-wrap: balance; }
+
+  /* o accordion segue o do footer: pergunta 20, resposta 16, +/- de 32 */
+  .faq__list { flex: none; }
+  .faq__item { padding: 16px 0; }
+  .faq__item + .faq__item { margin-top: 0; }
+  .faq__question {
+    gap: 16px;
+    font-size: 20px;
+    font-weight: 600;
+  }
+  .faq__question::after { font-size: 32px; }
+  .faq__answer {
+    margin-top: 16px;
+    font-size: 16px;
+  }
+}

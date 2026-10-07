@@ -64,7 +64,7 @@
   left: calc(-35.105 * var(--s));
   top: calc(187.627 * var(--s));
   width: calc(609.389 * var(--s));
-  background-image: url("./about-textura-1.png");
+  background-image: url("./about-textura-1.webp");
   mask-position: calc(61.804 * var(--s)) 0;
   mask-size: calc(494.433 * var(--s)) calc(494.433 * var(--s));
 }
@@ -73,7 +73,7 @@
   left: calc(280.176 * var(--s));
   top: calc(32.461 * var(--s));
   width: calc(509.367 * var(--s));
-  background: url("./about-textura-2.png") calc(-174.866 * var(--s)) calc(-32.141 * var(--s)) / 123.84% 92.88% no-repeat;
+  background: url("./about-textura-2.webp") calc(-174.866 * var(--s)) calc(-32.141 * var(--s)) / 123.84% 92.88% no-repeat;
   mask-position: calc(51.66 * var(--s)) 0;
   mask-size: calc(413.28 * var(--s)) calc(413.28 * var(--s));
 }
@@ -81,7 +81,7 @@
   left: calc(-98.472 * var(--s));
   top: 0;
   width: calc(673.801 * var(--s));
-  background-image: url("./about-textura-3.png");
+  background-image: url("./about-textura-3.webp");
   mask-position: calc(129.716 * var(--s)) 0;
   mask-size: calc(360.322 * var(--s)) calc(360.322 * var(--s));
 }
